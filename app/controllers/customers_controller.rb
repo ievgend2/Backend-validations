@@ -47,7 +47,7 @@ class CustomersController < ApplicationController
       redirect_to @customer
     else
       flash.now.alert = @customer.errors.full_messages.to_sentence
-      render :new
+      render :new  
     end
   end
 

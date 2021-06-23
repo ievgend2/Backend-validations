@@ -1,4 +1,24 @@
 require 'rails_helper'
+
+# RSpec.describe "Customers", type: :request do
+#   describe "GET /customers" do
+#     it "works! (now write some real specs)" do
+#       get customers_path
+#       expect(response).to have_http_status(200)
+#     end
+#   end
+# end
+
+# DEPRECATION WARNING: Using positional arguments in integration tests has been deprecated,
+# in favor of keyword arguments, and will be removed in Rails 5.1.
+# Deprecated style:
+# get "/profile", { id: 1 }, { "X-Extra-Header" => "123" }
+# New keyword style:
+# get "/profile", params: { id: 1 }, headers: { "X-Extra-Header" => "123" }
+#  (called from block (3 levels) in <top (required)> at /Users/myang/Documents/ctd/Backend-validations/spec/requests/customers_spec.rb:34)
+# .DEPRECATION WARNING: Using positional arguments in integration tests has been deprecated,
+# in favor of keyword arguments, and will be removed in Rails 5.1.
+
 RSpec.describe "CustomersControllers", type: :request do
   describe "get customers_path" do
     it "renders the index view" do
@@ -65,52 +85,14 @@ RSpec.describe "CustomersControllers", type: :request do
       put customer_path(customer.id), params: {customer: {phone: "123"}}
       customer.reload
       expect(customer.phone).not_to eq("123")
-      expect(response).to render_template(:edit)
+      expect(response).to render_template(:edit) 
     end
   end
   describe "delete a customer record" do
     it "deletes a customer record" do
       customer = FactoryBot.create(:customer)
       delete customer_path(customer.id), params:{}
-      expect(response).to redirect_to customers_path
+      expect(response).to redirect_to customers_path 
     end
   end
 end
-#
-# .........DEPRECATION WARNING: Using positional arguments in integration tests h
-# as been deprecated,
-# in favor of keyword arguments, and will be removed in Rails 5.1.
-#
-# Deprecated style:
-# get "/profile", { id: 1 }, { "X-Extra-Header" => "123" }
-#
-# New keyword style:
-# get "/profile", params: { id: 1 }, headers: { "X-Extra-Header" => "123" }
-#  (called from block (3 levels) in <top (required)> at /vagrant/Backend-validatio
-# ns/spec/requests/customers_spec.rb:6)
-# .DEPRECATION WARNING: Using positional arguments in integration tests has been d
-# eprecated,
-# in favor of keyword arguments, and will be removed in Rails 5.1.
-#
-# Deprecated style:
-# get "/profile", { id: 1 }, { "X-Extra-Header" => "123" }
-#
-# New keyword style:
-# get "/profile", params: { id: 1 }, headers: { "X-Extra-Header" => "123" }
-#  (called from block (3 levels) in <top (required)> at /vagrant/Backend-validatio
-# ns/spec/requests/customers_spec.rb:13)
-# .DEPRECATION WARNING: Using positional arguments in integration tests has been d
-# eprecated,
-# in favor of keyword arguments, and will be removed in Rails 5.1.
-#
-# Deprecated style:
-# get "/profile", { id: 1 }, { "X-Extra-Header" => "123" }
-#
-# New keyword style:
-# get "/profile", params: { id: 1 }, headers: { "X-Extra-Header" => "123" }
-#  (called from block (3 levels) in <top (required)> at /vagrant/Backend-validatio
-# ns/spec/requests/customers_spec.rb:17)
-# .**..***
-#
-# Pending: (Failures listed here are expected and do not affect your suite's statu
-# s)
